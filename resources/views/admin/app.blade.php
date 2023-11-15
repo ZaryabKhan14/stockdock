@@ -11,7 +11,7 @@
 		<!-- Theme style -->
 		<link rel="stylesheet" href="{{asset('adminassets/css/adminlte.min.css')}}">
 		<link rel="stylesheet" href="{{asset('adminassets/css/custom.css')}}">
-	</head>
+		<meta name="csrf-token" content="{{csrf_token()}}">
 	<body class="hold-transition sidebar-mini">
 		<!-- Site wrapper -->
 		<div class="wrapper">
@@ -83,5 +83,13 @@
 		<script src="{{asset('adminassets/js/adminlte.min.js')}}"></script>
 		<!-- AdminLTE for demo purposes -->
 		<script src="{{asset('adminassets/js/demo.js')}}"></script>
+		<script type="text/javascript">
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			}
+		});
+</script>
 	</body>
 </html>
+

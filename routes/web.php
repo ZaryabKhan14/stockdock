@@ -33,7 +33,10 @@ Route::group(['prefix'=>'admin'],function(){
         
         Route::get('/dashboard',[HomeController::class,'index'])->name('admin.dashboard');
         Route::get('/logout',[HomeController::class,'logout'])->name('admin.logout');
+
+        //category routes
         Route::get('/category/create',[categorycontroller::class,'create'])->name('category.create');
+        Route::post('/category/create',[categorycontroller::class,'store'])->name('category.store');
 
     });
 });

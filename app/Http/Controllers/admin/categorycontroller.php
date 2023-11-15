@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class categorycontroller extends Controller
 {
@@ -15,8 +16,22 @@ class categorycontroller extends Controller
         return view('admin.category.createcategory');
     }
 
-    public function store(){
-        
+    public function store(Request $request){
+        $validator = Validator::make(request()->all(),[
+            'name' =>'required',
+            'slug' =>'required|unique:category',
+        ]);
+
+        if($validator->passes()){
+            
+        }
+        else{
+            return response()->json([
+                'status' => false,
+                'errors' => $validator->errors()
+            ]);
+           
+        }
     }
 
 
